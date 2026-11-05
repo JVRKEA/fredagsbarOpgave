@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    environment:
+      FLASK_HOST: 0.0.0.0          # lyt på alle netværkskort, ikke kun containerens egen localhost
+    ports:
+      - "5000:5000"                # værtsmaskine:container - så Postman kan nå API'en
+
+  frontend:
+    build: .
+    command: uv run streamlit run app.py --server.address=0.0.0.0
+    environment:
+      API_URL: http://api:5000     # "api" er service-navnet ovenfor - Docker oversætter det til containerens IP
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api

@@ -1,0 +1,3 @@
+# Streamlits tema. primaryColor bruges til fx kanten om et aktivt tekstfelt og knapper.
+[theme]
+primaryColor = "#2E9E4F"
